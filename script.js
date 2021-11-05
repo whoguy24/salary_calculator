@@ -31,27 +31,28 @@ function renderEmployeeTable (employeeData) {
     }
 }
 
-function createEmployee () {
-
-    let newFirstName = '';
-    let newLastName = '';
-    let newID = '';
-    let newTitle = '';
-    let newSalary = '';
-
+function retrieveInputData () {
     let newEmployee = {
-        firstName: newFirstName,
-        lastName: newLastName,
-        ID: newID,
-        title: newTitle,
-        salary: newSalary
+        firstName: $('#field-firstName').val(),
+        lastName: $('#field-lastName').val(),
+        ID: $('#field-ID').val(),
+        title: $('#field-title').val(),
+        salary: $('#field-salary').val()
     }
+    clearInputFields();
+    return newEmployee;
+}
 
+function createEmployee () {
+    let newEmployee = retrieveInputData()
     employees.push(newEmployee);
-
     renderEmployeeTable(employees);
+}
 
-
-
-
+function clearInputFields () {
+    $('#field-firstName').val(''),
+    $('#field-lastName').val(''),
+    $('#field-ID').val(''),
+    $('#field-title').val(''),
+    $('#field-salary').val('')
 }
