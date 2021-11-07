@@ -40,8 +40,6 @@ tbody tr:nth-child(even) {
 }
 
 .total-monthly-red {
-    font-size:larger;
-    margin-left: 5px;
     color: red;
 }
 
