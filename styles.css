@@ -4,4 +4,16 @@ body {
 
 table {
     background: lightgray;
+    border: 1px solid grey;
+    border-collapse: collapse;
+
+}
+
+td, th {
+    border: 1px solid grey;
+    text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+    background: #eee;
 }
