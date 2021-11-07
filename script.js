@@ -1,15 +1,27 @@
 $(document).ready(onReady);
 
 let employees = [
-    /*
     {
         firstName: 'Warren',
         lastName: 'OBrien',
         ID: 5,
         title: 'Developer',
         salary: 2456
+    },
+    {
+        firstName: 'Gary',
+        lastName: 'Jones',
+        ID: 6,
+        title: 'Developer',
+        salary: 2186
+    },
+    {
+        firstName: 'Marty',
+        lastName: 'Brooks',
+        ID: 7,
+        title: 'Developer',
+        salary: 1645
     }
-    */
 ];
 
 function onReady() {
@@ -33,6 +45,10 @@ function renderEmployeeTable (employeeData) {
             </tr>
         `);
     }
+
+    let totalMonthly = calculateTotalSalary();
+    $('#total-monthly').text('');
+    $('#total-monthly').text(totalMonthly);
 }
 
 function retrieveInputData () {
@@ -49,6 +65,8 @@ function retrieveInputData () {
 
 function createEmployee () {
     let newEmployee = retrieveInputData()
+    newEmployee.ID = Number(newEmployee.ID);
+    newEmployee.salary = Number(newEmployee.salary);
     employees.push(newEmployee);
     renderEmployeeTable(employees);
 }
@@ -63,10 +81,19 @@ function clearInputFields () {
 
 function deleteEmployee() {
     let employeeID = $(this).parent().parent().attr('id');
-    for (let employee of employees) {
-        if (employee.id = employeeID) {
-            employees.splice(employee)  
-        }
-    }
+    employeeID = Number(employeeID);
     $(this).parent().parent().remove();  
+    let index = employees.findIndex(function (employee) {
+        return employee.ID === employeeID;
+    });
+    employees.splice(index, 1);
+    renderEmployeeTable(employees);
+}
+
+function calculateTotalSalary () {
+    let sum = 0
+    for (let employee of employees) {
+        sum += employee.salary
+    }
+    return sum;
 }
