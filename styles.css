@@ -6,14 +6,42 @@ table {
     background: lightgray;
     border: 1px solid grey;
     border-collapse: collapse;
+    width: 800px;
+    margin-top: 20px;
+}
 
+thead {
+    font-weight: bold;
 }
 
 td, th {
     border: 1px solid grey;
     text-align: left;
+    padding: 4px;
 }
 
 tbody tr:nth-child(odd) {
-    background: #eee;
+    background: rgb(240, 255, 255);  
 }
+
+tbody tr:nth-child(even) {
+    background: white;  
+}
+
+.div-total-monthly {
+    padding: 10px;
+    margin-left: 600px;
+    display: flex;
+}
+
+.total-monthly {
+    font-size:larger;
+    margin-left: 5px;
+}
+
+.total-monthly-red {
+    font-size:larger;
+    margin-left: 5px;
+    color: red;
+}
+
