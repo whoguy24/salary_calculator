@@ -22,6 +22,16 @@ Directly above this is how long it took you to develop the project. Your project
 Javascript<br>
 Visual Studio
 
+## Supported Browsers
+Chrome<br>
+Edge<br>
+Firefox<br>
+Opera<br>
+Safari<br>
+
+<span style="font-size:10px;">_*Mobile browsers associated with the above web browsers are also supported.<br>
+*Unfortunately, Internet Explorer is not supported at this time._</span>
+
 ## Acknowledgement
 Thanks to [Prime Digital Academy](www.primeacademy.io), instructors and peers alike who helped me construct this app.
 
