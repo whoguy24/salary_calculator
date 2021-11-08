@@ -30,16 +30,17 @@ tbody tr:nth-child(even) {
 
 .div-total-monthly {
     padding: 10px;
-    margin-left: 600px;
     display: flex;
+    height: 30px;
+    padding-left: 600px;
+    align-items: center;
 }
 
-.total-monthly {
-    font-size:larger;
-    margin-left: 5px;
+.div-total-monthly-red {
+    background-color: red;
 }
 
-.total-monthly-red {
-    color: red;
+#total-monthly {
+  font-size: larger;
+  margin-left: 5px;
 }
-

@@ -60,12 +60,11 @@ function renderEmployeeTable (employees) {
         `);
     }
     let totalMonthly = calculateTotalSalary();
-    $('#total-monthly').text('');
     $('#total-monthly').text(totalMonthly);
-    if (totalMonthly >= 20000) {
-        $('#total-monthly').addClass('total-monthly-red')
+    if (totalMonthly > 20000) {
+        $('.div-total-monthly').addClass('div-total-monthly-red')
     } else {
-        $('#total-monthly').removeClass('total-monthly-red')
+        $('.div-total-monthly').removeClass('div-total-monthly-red')
     }
 }
 
@@ -77,8 +76,12 @@ function retrieveInputData () {
         title: $('#field-title').val(),
         salary: $('#field-salary').val()
     }
-    clearInputFields();
-    return newEmployee;
+    if (newEmployee.firstName && newEmployee.lastName && newEmployee.ID && newEmployee.title && newEmployee.salary) {
+        clearInputFields();
+        return newEmployee;
+    } else {
+        return false;
+    }
 }
 
 function clearInputFields () {
@@ -91,10 +94,15 @@ function clearInputFields () {
 
 function createEmployee () {
     let newEmployee = retrieveInputData()
-    newEmployee.ID = Number(newEmployee.ID);
-    newEmployee.salary = Number(newEmployee.salary);
-    employees.push(newEmployee);
-    renderEmployeeTable(employees);
+    if (newEmployee) {
+        newEmployee.ID = Number(newEmployee.ID);
+        newEmployee.salary = Number(newEmployee.salary);
+        employees.push(newEmployee);
+        renderEmployeeTable(employees);
+    }
+    else {
+        console.log('Please populate all required fields.');
+    }
 }
 
 function deleteEmployee() {
@@ -109,9 +117,11 @@ function deleteEmployee() {
 }
 
 function calculateTotalSalary () {
-    let sum = 0
+    let sum = 0;
     for (let employee of employees) {
-        sum += employee.salary
+        sum += employee.salary;
     }
+    sum = sum / 12;
+    sum = sum.toFixed(2);
     return sum;
 }
